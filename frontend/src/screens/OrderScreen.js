@@ -148,13 +148,14 @@ export default function OrderScreen() {
         const { data: clientId } = await axios.get('/api/keys/paypal', {
           headers: { authorization: `Bearer ${userInfo.token}` },
         });
-        paypalDispatch({
-          type: 'resetOptions',
-          value: {
-            'client-id': clientId,
-            currency: 'USD',
-          },
-        });
+        console.log(clientId);
+        // paypalDispatch({
+        //   type: 'resetOptions',
+        //   value: {
+        //     'client-id': clientId,
+        //     currency: 'USD',
+        //   },
+        // });
         paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
       };
       loadPaypalScript();
