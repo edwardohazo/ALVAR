@@ -82,7 +82,7 @@ function App() {
             </Container>
           </Navbar>
         </header>
-        <main className="main">
+        <main className="main main-home-screen">
           <div className="m4">
             <Routes>
               <Route path="/" element={<HomeScreen />}></Route>
@@ -106,7 +106,7 @@ function App() {
             </Routes>
           </div>
         </main>
-        <footer>
+        <footer class="footer">
           <div className="text-center">All rights reserved</div>
         </footer>
       </div>

@@ -15,6 +15,11 @@ header a {
   font-weight: bold;
   text-decoration: none;
 }
+.container .navbar-brand,
+.me-auto .nav-link,
+.me-auto .nav-link:hover {
+  color: #ffffff;
+}
 .site-container {
   min-height: 100vh;
 }
@@ -22,15 +27,19 @@ header a {
   flex: 1;
 }
 .btn-primary {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #03ef62;
   border: none;
 }
+
+.btn-primary:hover {
+  background-color: #7933ff;
+}
 .row {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .mb-3 {
   width: 50%;
@@ -38,16 +47,28 @@ header a {
 .card {
   width: 100%;
 }
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .rating span {
   color: #ffc000;
 }
 .product {
-  border: 1px #000000 solid;
+  border: none;
   margin: 1rem;
 }
-.product img {
+.card a, .card-body {
+  margin: auto;
+}
+.card-img {
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
+  position: center;
+}
+.card-text  {
+  margin: 0;
 }
 .product-info {
   padding: 1rem;
@@ -68,3 +89,9 @@ header a {
   border-bottom: 0.2rem solid #f08000;
   color: #f08000;
 }
+.footer {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+
