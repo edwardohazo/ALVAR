@@ -1,7 +1,7 @@
 const newSpan = document.getElementById('span');
 
 let num = 0;
-
+console.log('index.js');
 setInterval(
   () => {
     num++;

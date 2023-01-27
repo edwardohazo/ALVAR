@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { Store } from '../Store';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
-import axios from 'axios';
+import axios, { Axios } from 'axios';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -27,6 +27,7 @@ export default function ProfileScreen() {
   const [name, setName] = useState(userInfo.name);
   const [email, setEmail] = useState(userInfo.email);
   const [password, setPassword] = useState('');
+  const [image, setImage] = useState(userInfo.image);
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const [{ loadingUpdate }, dispatch] = useReducer(reducer, {
@@ -42,6 +43,7 @@ export default function ProfileScreen() {
           name,
           email,
           password,
+          confirmPassword,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -67,6 +69,7 @@ export default function ProfileScreen() {
         <title>User Profile</title>
       </Helmet>
       <h1 className="my-3">User Profile</h1>
+      <img className="avatar-pic" src={`/images/${image}`} alt="avatar"></img>
       <form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="name">
           <Form.Label>Name</Form.Label>

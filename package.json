@@ -1,0 +1,17 @@
+{
+  "name": "alvar",
+  "version": "1.0.0",
+  "description": "1. Install Tools\r 2. Create React App\r 3. Create git repository\r 4. Create Data File\r 5. Create products component\r 6. Add routing\r    1. npm i react-router-dom\r    2. create route for home screen\r    3. create route form product screen\r 7. Create Node Js Server\r    1. run npm init in root folder\r    2. Update package.json set type: module\r    3. Add .js to imports\r    4. npm install express\r    5. create js server\r    6. add start comand as node backend/server.js\r    7. require express\r    8. create route for / return backend is ready\r    9. move products.js from frontend to backend\r    10. create routes for /api/products\r    11. return products\r    12. run npm start\r 8. Fetch products from backend\r    1. set proxy in package.json\r    2. install axios\r    3. use state hook\r    4. use effect hook\r    5. use reducer hook\r 9. Manage a state by reducer hook.\r    1. define reducer.\r    2. update fetch data\r    3. get state from reducer\r 10. Add bootstrap UI framework\r     1. npm install react-bootstrap bootstrap\r     2. update App.js",
+  "main": "test.js",
+  "type": "module",
+  "scripts": {
+    "build": "cd backend && npm install  && cd ../frontend && npm install && npm run build",
+    "start": "node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}
