@@ -17,10 +17,36 @@ const initialState = {
       ? JSON.parse(localStorage.getItem('cartItems'))
       : [],
   },
+  wishList: {
+    wishListItems: localStorage.getItem('wishListItems')
+      ? JSON.parse(localStorage.getItem('wishListItems'))
+      : [],
+  },
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'WISHLIST_ADD_ITEM':
+      console.log('add to wishlist case');
+      const newWishListItem = action.payload;
+      const existWishListItem = state.wishList.wishListItems.find(
+        (item) => item._id === newWishListItem._id
+      );
+      const wishListItems = existWishListItem
+        ? state.wishList.wishListItems.map((item) =>
+            item._id === existWishListItem._id ? newWishListItem : item
+          )
+        : [...state.wishList.wishListItems, newWishListItem];
+      localStorage.setItem('wishListItems', JSON.stringify(wishListItems));
+      return { ...state, wishList: { ...state.wishList, wishListItems } };
+    case 'WISHLIST_REMOVE_ITEM': {
+      const wishListItems = state.wishList.wishListItems.filter(
+        (item) => item._id !== action.payload._id
+      );
+      localStorage.setItem('wishListItems', JSON.stringify(wishListItems));
+      return { ...state, wishList: { ...state.wishList, wishListItems } };
+    }
+
     case 'CART_ADD_ITEM':
       const newItem = action.payload;
       const existItem = state.cart.cartItems.find(

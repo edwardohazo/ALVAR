@@ -25,10 +25,14 @@ header a {
 }
 .main {
   flex: 1;
+  min-height: 100vh;
 }
 .btn-primary {
   background-color: #03ef62;
   border: none;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .btn-primary:hover {
@@ -59,7 +63,8 @@ header a {
   border: none;
   margin: 1rem;
 }
-.card a, .card-body {
+.card a,
+.card-body {
   margin: auto;
 }
 .card-img {
@@ -67,7 +72,7 @@ header a {
   max-width: 300px;
   position: center;
 }
-.card-text  {
+.card-text {
   margin: 0;
 }
 .product-info {
@@ -93,5 +98,3 @@ header a {
   color: #ffffff;
   background-color: #000000;
 }
-
-

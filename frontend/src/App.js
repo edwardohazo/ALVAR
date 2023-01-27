@@ -22,6 +22,7 @@ import OrderScreen from './screens/OrderScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import PlayListScreen from './screens/PlayListScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -44,11 +45,21 @@ function App() {
               <LinkContainer to="/">
                 <Navbar.Brand>ALVAR | MUSIC</Navbar.Brand>
               </LinkContainer>
+              <div className="playlist-btn">
+                <i className="fa-solid fa-play"></i>
+                &nbsp;&nbsp;
+                <Link to="./Shop">PLAY LIST</Link>
+              </div>
               <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto w-100 justify-content-end">
+                  <img
+                    src={'/images/uploads/taco.png'}
+                    alt="taco"
+                    className="taco-icon"
+                  />
                   <Link to="/cart" className="nav-link">
-                    Cart
+                    Tacos
                     {cart.cartItems.length > 0 && (
                       <Badge pill bg="danger">
                         {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
@@ -83,30 +94,26 @@ function App() {
           </Navbar>
         </header>
         <main className="main main-home-screen">
-          <div className="m4">
-            <Routes>
-              <Route path="/" element={<HomeScreen />}></Route>
-              <Route path="/shop" element={<ShopScreen />}></Route>
-              <Route path="/product/:slug" element={<ProductScreen />}></Route>
-              <Route path="/cart" element={<CartScreen />}></Route>
-              <Route path="/signin" element={<SigninScreen />}></Route>
-              <Route path="/signup" element={<SignupScreen />}></Route>
-              <Route path="/profile" element={<ProfileScreen />}></Route>
-              <Route
-                path="/Shipping"
-                element={<ShippingAddressScreen />}
-              ></Route>
-              <Route path="/payment" element={<PaymentMethodScreen />}></Route>
-              <Route path="/order/:id" element={<OrderScreen />}></Route>
-              <Route path="/placeorder" element={<PlaceOrderScreen />}></Route>
-              <Route
-                path="/orderhistory"
-                element={<OrderHistoryScreen />}
-              ></Route>
-            </Routes>
-          </div>
+          <Routes>
+            <Route path="/" element={<HomeScreen />}></Route>
+            <Route path="/shop" element={<ShopScreen />}></Route>
+            <Route path="/product/:slug" element={<ProductScreen />}></Route>
+            <Route path="/cart" element={<CartScreen />}></Route>
+            <Route path="/playlist" element={<PlayListScreen />}></Route>
+            <Route path="/signin" element={<SigninScreen />}></Route>
+            <Route path="/signup" element={<SignupScreen />}></Route>
+            <Route path="/profile" element={<ProfileScreen />}></Route>
+            <Route path="/Shipping" element={<ShippingAddressScreen />}></Route>
+            <Route path="/payment" element={<PaymentMethodScreen />}></Route>
+            <Route path="/order/:id" element={<OrderScreen />}></Route>
+            <Route path="/placeorder" element={<PlaceOrderScreen />}></Route>
+            <Route
+              path="/orderhistory"
+              element={<OrderHistoryScreen />}
+            ></Route>
+          </Routes>
         </main>
-        <footer class="footer">
+        <footer className="footer">
           <div className="text-center">All rights reserved</div>
         </footer>
       </div>

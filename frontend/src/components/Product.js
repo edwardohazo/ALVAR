@@ -1,10 +1,9 @@
+import { Link } from 'react-router-dom';
+import { Card, Button } from 'react-bootstrap';
+import Rating from './Rating';
 import axios from 'axios';
 import { useContext } from 'react';
-import { Card } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import Rating from '../components/Rating.js';
-import { Store } from '../Store.js';
+import { Store } from '../Store';
 
 function Product(props) {
   const { product } = props;
@@ -12,7 +11,11 @@ function Product(props) {
   const {
     cart: { cartItems },
   } = state;
+  // const {
+  //   wishList: { wishListItems },
+  // } = state;
   const addToCartHandler = async (item) => {
+    console.log('add to cart list handler');
     const existItem = cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${item._id}`);
@@ -25,24 +28,68 @@ function Product(props) {
       payload: { ...item, quantity },
     });
   };
-
+  // Wishlist
+  const addToWishListHandler = async (item) => {
+    ctxDispatch({
+      type: 'WISHLIST_ADD_ITEM',
+      payload: { ...item },
+    });
+  };
+  // Animation backwards after hover out to hidde buttons
+  const mouseIn = (e) => {
+    const card = e.currentTarget;
+    card.classList.remove('wasHovered');
+  };
+  const mouseOut = (e) => {
+    const card = e.currentTarget;
+    card.classList.add('wasHovered');
+  };
   return (
-    <Card className="product">
+    <Card
+      className="card wasHovered"
+      onMouseEnter={(e) => {
+        mouseIn(e);
+      }}
+      onMouseLeave={(e) => {
+        mouseOut(e);
+      }}
+    >
       <Link to={`/product/${product.slug}`}>
-        <img
-          src={product.image}
-          className="card-img-top card-img"
-          alt={product.name}
-        ></img>
+        <img src={product.image} className="card-img-top" alt={product.name} />
       </Link>
+      <div className="addToWishlist">
+        <div className="addToWishlist__icon">
+          <Link className="addToWishlist__icon-link">
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </Link>
+        </div>
+        <div
+          className="addToWishlist__icon"
+          onClick={() => {
+            addToWishListHandler(product);
+          }}
+        >
+          <Link to={'/playlist'} className="addToWishlist__icon-link">
+            <i className="fa-regular fa-heart"></i>
+          </Link>
+        </div>
+      </div>
+      <div className="wd-add-btn wd-add-btn-replace woodmart-add-btn">
+        <div
+          className="button wp-element-button product_type_simple add_to_cart_button ajax_add_to_cart add-to-cart-loop"
+          alt=""
+          onClick={() => {
+            addToCartHandler(product);
+          }}
+        >
+          <span>Add to Cart</span>
+        </div>
+      </div>
       <Card.Body>
         <Link to={`/product/${product.slug}`}>
           <Card.Title>{product.name}</Card.Title>
         </Link>
-        <Rating
-          rating={product.rating}
-          numReviews={product.numReviews}
-        ></Rating>
+        <Rating rating={product.rating} numReviews={product.reviews}></Rating>
         <Card.Text>${product.price}</Card.Text>
         {product.countInStock === 0 ? (
           <Button variant="light" disabled>
@@ -54,9 +101,15 @@ function Product(props) {
               addToCartHandler(product);
             }}
           >
-            Add to cart
+            Donate a taco
           </Button>
         )}
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        <img
+          src={'/images/uploads/taco.png'}
+          alt="taco"
+          className="taco-icon"
+        />
       </Card.Body>
     </Card>
   );

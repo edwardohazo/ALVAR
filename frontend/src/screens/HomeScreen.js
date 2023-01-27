@@ -6,7 +6,6 @@ function HomeScreen() {
       <div className="paralax-container" id="header">
         <div className="img-header">
           <div className="welcome">
-            <h1>Alvar Villaviciosa</h1>
             <img className="disk" src="/images/uploads/disk.png" alt="" />
           </div>
         </div>
@@ -59,9 +58,6 @@ function HomeScreen() {
             the last details with -Cancer- and the next piece will be -Taurus-
             Your help is truly appreciated, Keep on dreaming!
           </p>
-          <span>
-            <Link to="./Shop">MY SONGS!</Link>
-          </span>
         </div>
       </section>
 
@@ -72,17 +68,17 @@ function HomeScreen() {
         <div className="ejeZproject">
           <div className="container-project">
             <div className="project-title">
-              <h2>STYLES</h2>
+              <h2>BLOGS</h2>
             </div>
             <div className="project-img">
+            <img src="/images/uploads/rap.jpg" alt="" />
               <img src="/images/uploads/rock.jpg" alt="" />
-              <img src="/images/uploads/rap.jpg" alt="" />
               <img src="/images/uploads/pop.jpg" alt="" />
               <img src="/images/uploads/classic.jpg" alt="" />
               <img src="/images/uploads/ambient.jpg" alt="" />
-              <img src="/images/uploads/electronic.jpg" alt="" />
               <img src="/images/uploads/jazz.jpg" alt="" />
               <img src="/images/uploads/experimental.jpg" alt="" />
+              <img src="/images/uploads/electronic.jpg" alt="" />
               <img src="/images/uploads/folk.jpg" alt="" />
             </div>
           </div>
